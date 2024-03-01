@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="calculator.css">
+    <title>CALCULATOR</title>
+</head>
+<body>
+    <div id="calculator">
+        <input type="text" id="display" readonly placeholder="0">
+        <div class="button-container">
+            <button class="button clear">C</button>
+            <button class="button" data-value="1">1</button>
+            <button class="button" data-value="2">2</button>
+            <button class="button operator" data-value="+">+</button>
+            <button class="button" data-value="3">3</button>
+            <button class="button" data-value="4">4</button>
+            <button class="button operator" data-value="-">-</button>
+            <button class="button" data-value="5">5</button>
+            <button class="button" data-value="6">6</button>
+            <button class="button operator" data-value="*">*</button>
+            <button class="button" data-value="7">7</button>
+            <button class="button" data-value="8">8</button>
+            <button class="button operator" data-value="/">/</button>
+            <button class="button equal">=</button>
+            <button class="button" data-value="9">9</button>
+            <button class="button" data-value="0">0</button>
+            <button class="button dot" data-value=".">.</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.querySelector('#display');
+        const buttons = document.querySelectorAll('.button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.classList.contains('clear')) {
+                    display.value = '';
+                } else if (button.classList.contains('equal')) {
+                    display.value = eval(display.value);
+                } else {
+                    display.value += button.dataset.value;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
